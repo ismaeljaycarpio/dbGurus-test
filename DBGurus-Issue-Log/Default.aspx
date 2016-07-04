@@ -3,6 +3,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="jumbotron">
         <h1>DBGuru's Issue Log</h1>
+        <p> - Ismael Jay Carpio</p>
     </div>
 
     <div class="row">
