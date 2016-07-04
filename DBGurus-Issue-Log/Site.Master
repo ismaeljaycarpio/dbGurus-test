@@ -58,7 +58,7 @@
 
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - DBGurus</p>
+                <p>&copy; <%: DateTime.Now.Year %> - DBGurus </p>
             </footer>
         </div>
     </form>
