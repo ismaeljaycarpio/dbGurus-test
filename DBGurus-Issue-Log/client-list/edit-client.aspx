@@ -102,12 +102,12 @@
 
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <asp:Button ID="btnSubmit"
+                        <asp:Button ID="btnUpdate"
                             runat="server"
                             CssClass="btn btn-primary"
-                            Text="Submit"
+                            Text="Update"
                             CausesValidation="true"
-                            OnClick="btnSubmit_Click" />
+                            OnClick="btnUpdate_Click" />
                         <asp:Button ID="btnCancel"
                             runat="server"
                             CssClass="btn btn-default"

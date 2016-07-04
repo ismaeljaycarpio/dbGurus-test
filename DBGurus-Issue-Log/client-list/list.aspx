@@ -34,6 +34,9 @@
                                         <asp:BoundField DataField="ClientName" HeaderText="Client Name" SortExpression="ClientName"  />
                                         <asp:BoundField DataField="UserName" HeaderText="User Name" SortExpression="UserName"  />
                                         <asp:BoundField DataField="State" HeaderText="State" SortExpression="State"  />
+
+                                        <asp:ButtonField Text="Edit" CommandName="editRecord" />
+                                        <asp:ButtonField Text="Delete" CommandName="deleteRecord" />
                                     </Columns>
                                     <PagerStyle CssClass="pagination-ys" />
                                 </asp:GridView>
@@ -47,6 +50,34 @@
                         </asp:UpdatePanel>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Modal -->
+    <div id="deleteModal" class="modal fade" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Delete Record</h4>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to delete this record ?
+                            <asp:HiddenField ID="hfDeleteId" runat="server" />
+                        </div>
+                        <div class="modal-footer">
+                            <asp:Button ID="btnDelete" runat="server" CssClass="btn btn-danger" Text="Delete" OnClick="btnDelete_Click" />
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </ContentTemplate>
+                    <Triggers>
+                        <asp:AsyncPostBackTrigger ControlID="btnDelete" EventName="Click" />
+                    </Triggers>
+                </asp:UpdatePanel>
             </div>
         </div>
     </div>

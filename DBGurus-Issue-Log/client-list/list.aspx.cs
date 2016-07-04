@@ -23,7 +23,19 @@ namespace DBGurus_Issue_Log.client_list
 
         protected void gvClients_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-
+            if(e.CommandName.Equals("editRecord"))
+            {
+                int index = Convert.ToInt32(e.CommandArgument);
+                string Id = gvClients.DataKeys[index].Value.ToString();
+                Response.Redirect("~/client-list/edit-client?ClientID=" + Id);
+            }
+            else if(e.CommandName.Equals("deleteRecord"))
+            {
+                int index = Convert.ToInt32(e.CommandArgument);
+                string Id = gvClients.DataKeys[index].Value.ToString();
+                hfDeleteId.Value = Id;
+                Helpers.ShowModal(this, this, "deleteModal");
+            }
         }
 
         protected void ClientsDataSource_Selecting(object sender, LinqDataSourceSelectEventArgs e)
@@ -34,6 +46,16 @@ namespace DBGurus_Issue_Log.client_list
                 s.ClientName.Contains(search) ||
                 s.UserName.Contains(search) ||
                 s.State.Contains(search)).ToList();
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            var client = db.Clients.Where(i => i.ClientID.ToString() == hfDeleteId.Value).FirstOrDefault();
+            db.Clients.DeleteOnSubmit(client);
+            db.SubmitChanges();
+
+            this.gvClients.DataBind();
+            Helpers.HideModal(this, this, "deleteModal");
         }
     }
 }

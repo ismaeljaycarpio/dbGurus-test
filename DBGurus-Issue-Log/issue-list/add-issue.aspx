@@ -62,12 +62,6 @@
                     <label class="control-label col-sm-2">Resolved Date: </label>
                     <div class="col-sm-5">
                         <asp:TextBox ID="txtResolvedDate" runat="server" CssClass="form-control"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4"
-                            runat="server"
-                            ControlToValidate="txtResolvedDate"
-                            CssClass="label label-danger"
-                            Display="Dynamic"
-                            ErrorMessage="Resolved Date is required"></asp:RequiredFieldValidator>
                     </div>
                 </div>
 
@@ -90,4 +84,10 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $(function () {
+            $('#<%= txtResolvedDate.ClientID%>').datepicker()
+        });
+    </script>
 </asp:Content>

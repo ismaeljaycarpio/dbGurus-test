@@ -10,7 +10,7 @@
                 <div class="panel-body">
                     <div class="form-inline">
                         <div class="form-group">
-                            <asp:DropDownList ID="ddlClient" runat="server" CssClass="form-control"></asp:DropDownList>
+                            <asp:DropDownList ID="ddlClient" runat="server" CssClass="form-control" OnSelectedIndexChanged="ddlClient_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
                         </div>
                     </div>
                 </div>
@@ -31,9 +31,19 @@
                                     OnRowCommand="gvIssues_RowCommand"
                                     DataSourceID="IssueDataSource">
                                     <Columns>
-                                        <asp:BoundField DataField="ClientName" HeaderText="Client Name" SortExpression="ClientName" />
-                                        <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
-                                        <asp:BoundField DataField="ResolvedDate" HeaderText="Resolved Date" SortExpression="ResolvedDate" />
+                                        <asp:TemplateField HeaderText="Client Name" SortExpression="Client.ClientName">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lbtnClientName" runat="server" Text='<%# Eval("Client.ClientName") %>'></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Status" SortExpression="Status.StatusName">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lbtnStatus" runat="server" Text='<%# Eval("Status.StatusName") %>'></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:BoundField DataField="ResolvedDate" HeaderText="Resolved Date" SortExpression="ResolvedDate" DataFormatString="{0:d}" />
+                                        <asp:ButtonField Text="Edit" CommandName="editRecord" />
+                                        <asp:ButtonField Text="Delete" CommandName="deleteRecord" />
                                     </Columns>
                                     <PagerStyle CssClass="pagination-ys" />
                                 </asp:GridView>
@@ -43,10 +53,39 @@
                                     PostBackUrl="~/issue-list/add-issue">Create Issue</asp:LinkButton>
                             </ContentTemplate>
                             <Triggers>
+                                <asp:PostBackTrigger ControlID="ddlClient" />
                             </Triggers>
                         </asp:UpdatePanel>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Modal -->
+    <div id="deleteModal" class="modal fade" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Delete Record</h4>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to delete this record ?
+                            <asp:HiddenField ID="hfDeleteId" runat="server" />
+                        </div>
+                        <div class="modal-footer">
+                            <asp:Button ID="btnDelete" runat="server" CssClass="btn btn-danger" Text="Delete" OnClick="btnDelete_Click" />
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </ContentTemplate>
+                    <Triggers>
+                        <asp:AsyncPostBackTrigger ControlID="btnDelete" EventName="Click" />
+                    </Triggers>
+                </asp:UpdatePanel>
             </div>
         </div>
     </div>
