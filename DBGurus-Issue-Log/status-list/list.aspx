@@ -4,7 +4,12 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Status</div>
+                <div class="panel-heading">
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addModal">Add</button>
+                    </div>
+                    <h5>Status</h5>
+                </div>
 
                 <div class="panel-body">
                     <div class="form-inline">
@@ -32,13 +37,14 @@
                                     DataSourceID="StatusDataSource">
                                     <Columns>
                                         <asp:BoundField DataField="StatusName" HeaderText="Status" SortExpression="StatusName" />
-                                        <asp:ButtonField Text="Edit" CommandName="edit" />
-                                        <asp:ButtonField Text="Delete" CommandName="delete" />
+                                        <asp:ButtonField Text="Edit" CommandName="editRecord" />
+                                        <asp:ButtonField Text="Delete" CommandName="deleteRecord" />
                                     </Columns>
                                     <PagerStyle CssClass="pagination-ys" />
                                 </asp:GridView>
                             </ContentTemplate>
                             <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="gvStatus" EventName="RowCommand" />
                             </Triggers>
                         </asp:UpdatePanel>
                     </div>

@@ -7,7 +7,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2">Client Name: </label>
                     <div class="col-sm-5">
-                        <asp:TextBox ID="txtClientName" runat="server" CssClass="form-control" MaxLength="50"></asp:TextBox>
+                        <asp:TextBox ID="txtClientName" runat="server" CssClass="form-control" MaxLength="200"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1"
                             runat="server"
                             ControlToValidate="txtClientName"
@@ -33,7 +33,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2">Email Address: </label>
                     <div class="col-sm-5">
-                        <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control"></asp:TextBox>
+                        <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" MaxLength="50"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3"
                             runat="server"
                             ControlToValidate="txtEmail"
@@ -60,20 +60,36 @@
                             CssClass="label label-danger"
                             Display="Dynamic"
                             ErrorMessage="Phone Number is required"></asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator3"
+                            runat="server"
+                            ControlToValidate="txtPhoneNumber"
+                            Display="Dynamic"
+                            CssClass="label label-danger"
+                            ValidationExpression="\S{10,}"
+                            ErrorMessage="10 digits"></asp:RegularExpressionValidator>
                         <asp:RegularExpressionValidator ID="RegularExpressionValidator2"
                             runat="server"
                             ControlToValidate="txtPhoneNumber"
                             Display="Dynamic"
                             CssClass="label label-danger"
-                            ValidationExpression="^(0)[0-9]"
-                            ErrorMessage="10 digits - must start with a 0"></asp:RegularExpressionValidator>
+                            ValidationExpression="^(0)[0-9]{9}$"
+                            ErrorMessage="must start with a 0"></asp:RegularExpressionValidator>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label col-sm-2">State: </label>
                     <div class="col-sm-5">
-                        <asp:DropDownList ID="ddlState" runat="server" CssClass="form-control"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlState" runat="server" CssClass="form-control">
+                            <asp:ListItem Value="0">--Select One--</asp:ListItem>
+                            <asp:ListItem Value="NSW">NSW</asp:ListItem>
+                            <asp:ListItem Value="ACT">ACT</asp:ListItem>
+                            <asp:ListItem Value="QLD">QLD</asp:ListItem>
+                            <asp:ListItem Value="SA">SA</asp:ListItem>
+                            <asp:ListItem Value="TAS">TAS</asp:ListItem>
+                            <asp:ListItem Value="WA">WA</asp:ListItem>
+                            <asp:ListItem Value="VIC">VIC</asp:ListItem>
+                        </asp:DropDownList>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator5"
                             runat="server"
                             InitialValue="0"
@@ -86,12 +102,12 @@
 
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <asp:Button ID="btnUpdate"
+                        <asp:Button ID="btnSubmit"
                             runat="server"
                             CssClass="btn btn-primary"
-                            Text="Update"
+                            Text="Submit"
                             CausesValidation="true"
-                            OnClick="btnUpdate_Click" />
+                            OnClick="btnSubmit_Click" />
                         <asp:Button ID="btnCancel"
                             runat="server"
                             CssClass="btn btn-default"

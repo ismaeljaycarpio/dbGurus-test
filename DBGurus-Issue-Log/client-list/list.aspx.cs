@@ -9,6 +9,8 @@ namespace DBGurus_Issue_Log.client_list
 {
     public partial class list : System.Web.UI.Page
     {
+        IssueDataContext db = new IssueDataContext();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -16,7 +18,7 @@ namespace DBGurus_Issue_Log.client_list
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-
+            this.gvClients.DataBind();
         }
 
         protected void gvClients_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -26,7 +28,12 @@ namespace DBGurus_Issue_Log.client_list
 
         protected void ClientsDataSource_Selecting(object sender, LinqDataSourceSelectEventArgs e)
         {
+            string search = txtSearch.Text.Trim();
 
+            e.Result = db.Clients.Where(s =>
+                s.ClientName.Contains(search) ||
+                s.UserName.Contains(search) ||
+                s.State.Contains(search)).ToList();
         }
     }
 }
