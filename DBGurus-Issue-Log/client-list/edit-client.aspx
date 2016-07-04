@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Add Client" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="add-client.aspx.cs" Inherits="DBGurus_Issue_Log.client_list.add_client" %>
+﻿<%@ Page Title="Edit Client" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="edit-client.aspx.cs" Inherits="DBGurus_Issue_Log.client_list.edit_client" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row">
@@ -86,12 +86,12 @@
 
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <asp:Button ID="btnSubmit"
+                        <asp:Button ID="btnUpdate"
                             runat="server"
                             CssClass="btn btn-primary"
-                            Text="Submit"
+                            Text="Update"
                             CausesValidation="true"
-                            OnClick="btnSubmit_Click" />
+                            OnClick="btnUpdate_Click" />
                         <asp:Button ID="btnCancel"
                             runat="server"
                             CssClass="btn btn-default"

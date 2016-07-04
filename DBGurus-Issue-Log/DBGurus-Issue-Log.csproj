@@ -62,7 +62,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="client-list\add-client.aspx" />
+    <Content Include="client-list\edit-client.aspx" />
     <Content Include="client-list\list.aspx" />
+    <Content Include="issue-list\add-issue.aspx" />
+    <Content Include="issue-list\edit-issue.aspx" />
     <Content Include="issue-list\list.aspx" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -113,6 +116,13 @@
     <Compile Include="client-list\add-client.aspx.designer.cs">
       <DependentUpon>add-client.aspx</DependentUpon>
     </Compile>
+    <Compile Include="client-list\edit-client.aspx.cs">
+      <DependentUpon>edit-client.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="client-list\edit-client.aspx.designer.cs">
+      <DependentUpon>edit-client.aspx</DependentUpon>
+    </Compile>
     <Compile Include="client-list\list.aspx.cs">
       <DependentUpon>list.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -129,6 +139,21 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers.cs" />
+    <Compile Include="issue-list\add-issue.aspx.cs">
+      <DependentUpon>add-issue.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="issue-list\add-issue.aspx.designer.cs">
+      <DependentUpon>add-issue.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="issue-list\edit-issue.aspx.cs">
+      <DependentUpon>edit-issue.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="issue-list\edit-issue.aspx.designer.cs">
+      <DependentUpon>edit-issue.aspx</DependentUpon>
     </Compile>
     <Compile Include="issue-list\list.aspx.cs">
       <DependentUpon>list.aspx</DependentUpon>
@@ -169,7 +194,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

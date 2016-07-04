@@ -7,19 +7,19 @@ using System.Web.UI.WebControls;
 
 namespace DBGurus_Issue_Log.issue_list
 {
-    public partial class list : System.Web.UI.Page
+    public partial class add_issue : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
-        protected void gvIssues_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void btnSubmit_Click(object sender, EventArgs e)
         {
 
         }
 
-        protected void IssueDataSource_Selecting(object sender, LinqDataSourceSelectEventArgs e)
+        protected void btnCancel_Click(object sender, EventArgs e)
         {
 
         }

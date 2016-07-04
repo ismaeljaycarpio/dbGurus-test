@@ -18,5 +18,15 @@ namespace DBGurus_Issue_Log.client_list
         {
 
         }
+
+        protected void gvClients_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+        }
+
+        protected void ClientsDataSource_Selecting(object sender, LinqDataSourceSelectEventArgs e)
+        {
+
+        }
     }
 }

@@ -16,10 +16,44 @@
                 </div>
                 <div class="panel-body">
                     <div class="table table-responsive">
-
+                        <asp:UpdatePanel ID="upClients" runat="server">
+                            <ContentTemplate>
+                                <asp:GridView ID="gvClients"
+                                    runat="server"
+                                    CssClass="table table-striped table-hover dataTable"
+                                    GridLines="None"
+                                    AutoGenerateColumns="False"
+                                    AllowPaging="True"
+                                    AllowSorting="True"
+                                    EmptyDataText="No Record(s) found"
+                                    ShowHeaderWhenEmpty="True"
+                                    DataKeyNames="ClientID"
+                                    OnRowCommand="gvClients_RowCommand"
+                                    DataSourceID="ClientsDataSource">
+                                    <Columns>
+                                        <asp:BoundField DataField="ClientName" HeaderText="Client Name" SortExpression="ClientName"  />
+                                        <asp:BoundField DataField="UserName" HeaderText="User Name" SortExpression="UserName"  />
+                                        <asp:BoundField DataField="State" HeaderText="State" SortExpression="State"  />
+                                    </Columns>
+                                    <PagerStyle CssClass="pagination-ys" />
+                                </asp:GridView>
+                                <asp:LinkButton ID="lblCreate"
+                                    runat="server"
+                                    CssClass="navbar-link"
+                                    PostBackUrl="~/client-list/add-client">Create Client Profile</asp:LinkButton>
+                            </ContentTemplate>
+                            <Triggers>
+                            </Triggers>
+                        </asp:UpdatePanel>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <asp:LinqDataSource ID="ClientsDataSource"
+        OnSelecting="ClientsDataSource_Selecting"
+        runat="server">
+    </asp:LinqDataSource>
+
 </asp:Content>

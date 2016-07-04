@@ -13,6 +13,15 @@ namespace DBGurus_Issue_Log {
     public partial class Site {
         
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
         /// siteMap1 control.
         /// </summary>
         /// <remarks>
