@@ -11,7 +11,10 @@ namespace DBGurus_Issue_Log
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(!Page.IsPostBack)
+            {
+                Helpers.CreateDB();
+            }
         }
     }
 }
